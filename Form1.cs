@@ -17,9 +17,45 @@ namespace lesos2
             InitializeComponent();
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void showButton_Click(object sender, EventArgs e)
         {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.Load(openFileDialog1.FileName);
+                //отобразится диалоговое окно "открыть файл".
+                //если пользователь нажмет "Ок", загрузите изображение, которое выбрал пользователь
+            }
+        }
 
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Image = null;
+            //очистка изображения
+        }
+
+        private void backgroundButton_Click(object sender, EventArgs e)
+        {
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.BackColor = colorDialog1.Color;
+                //задаёт цвет формы (установить цвет формы)
+            }
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            //закрыть форму
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            else
+                pictureBox1.SizeMode = PictureBoxSizeMode.Normal;
+            //если пользователь установит галочку, то картина будет выравнена будет под размер 
+            //иначе будет обычный размер картины
         }
     }
 }
